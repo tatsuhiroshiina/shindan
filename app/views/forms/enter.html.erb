@@ -1,0 +1,93 @@
+<div class="page">
+<div class="form-container">
+  <div class="header">
+    <h1>海外展開診断フォーム</h1>
+    <h3>貴社にとって最適な海外展開方法をチェック！</h3>
+    <% @form.errors.full_messages.each do |message| %>
+     <li class='error-message'><%= message %></li>
+    <% end %>
+  </div>
+  <%= form_for(@form) do |f| %>
+    <b>1 法人名</b>
+      <br>
+      <div class= "each-answer">
+      <%= f.text_field :field, class: "name-field"%>
+      <br>
+      </div>
+    <b>2 プロダクト分類</b>
+      <br>
+      <div class= "each-answer">
+      <span>ハードウェア</span>
+      <label><%= f.radio_button :product_type, :ハードウェア, checked: true %></label>
+      <span>ソフトウェア</span>
+      <label><%= f.radio_button :product_type, :ソフトウェア, checked: false %></label>
+      <br>
+      </div>
+    <b>3 顧客</b>
+      <br>
+      <div class= "each-answer">
+      <span>法人向け</span>
+      <label><%= f.radio_button :company_type, :法人向け, checked: true %></label>
+      <span>消費者向け</span>
+      <label><%= f.radio_button :company_type, :消費者向け, checked: false %></label>
+      <br>
+    </div>
+    <b>4 シリーズ</b>
+      <br>
+      <div class= "each-answer">
+        <span>シード</span>
+        <label><%= f.radio_button :series, :シード, checked: true %></label>
+        <span>シリーズA</span>
+        <label><%= f.radio_button :series, :シリーズA, checked: false %></label>
+        <span>シリーズB</span>
+        <label><%= f.radio_button :series, :シリーズB, checked: false %></label>
+        <br>
+        <span>シリーズC〜</span>
+        <label><%= f.radio_button :series, :シリーズC〜, checked: false %></label>
+        <span>スタートアップではない</span>
+        <label><%= f.radio_button :series, :スタートアップではない, checked: false %></label>
+        <br>
+      </div>
+    <b>5 事業分野(最も当てはまるものを1つ)</b>
+      <br>
+      <div class= "each-answer">
+        <span>環境・エネルギー</span>
+        <label><%= f.radio_button :industry, :環境・エネルギー, checked: true %></label>
+        <span>バイオ・医療</span>
+        <label><%= f.radio_button :industry, :バイオ・医療, checked: false %></label>
+        <br>
+        <span>大学発ディープテック</span>
+        <label><%= f.radio_button :industry, :大学発ディープテック, checked: false %></label>
+        <span>その他</span>
+        <label><%= f.radio_button :industry, :その他, checked: false %></label>
+        <br>
+      </div>
+    <b>6 関心のある地域（複数選択可）</b>
+      <br>
+      <div class="each-answer">
+        <% region = ["アジア","北米","アフリカ","欧州"] %>
+        <% region.each do |r| %>
+          <%= f.label :region, r %>
+          <%= f.check_box :region , {multiple: true},r,nil %>
+        <% end %>
+      </div>
+    <b>7 海外展開目的（複数選択可）</b>
+    <br>
+    <div class="each-answer">
+      <% objective = ["人材獲得","販路開拓","海外メディアカバレッジ","拠点設立","協業連携","市場調査","共同研究","資金調達"] %>
+      <% objective.each do |o| %>
+        <div class="objective-form">
+        <%= f.label :objective, o %>
+        <%= f.check_box :objective , {multiple: true},o,nil %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    </div>
+
+  <div class="result-button-container">
+    <button class="btn btn-primary result-button" type="submit">診断結果へ
+    </button>
+  </div>
+  <% end %>
+</div>

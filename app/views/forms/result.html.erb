@@ -1,0 +1,18 @@
+<h1 class="results-title">診断結果</h1>
+
+<div class= "solutions-container">
+  <div class="solutions-box"
+  <% @solutions.each.with_index(1) do |solution, i| %>
+    <tr>
+      <td><%= solution.type %></td>
+      <td><%=i%>. <%= solution.title %></td>
+      <td><%= solution.where %></td>
+      <td><%= solution.description %></td>
+      <% if !solution.website.nil? %>
+      <td><%= link_to "詳細", solution.website, target: :_blank %></td>
+      <% end %>
+    </tr>
+    <br>
+  <% end %>
+  </div>
+</div>
