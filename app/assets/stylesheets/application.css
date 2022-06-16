@@ -30,7 +30,7 @@
 }
 body {
   color: white;
-  background-image: url('world.jpeg');
+  background-image: url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHdvcmxkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60');
   position: relative;
   width: 100%;
   height: 100%;
