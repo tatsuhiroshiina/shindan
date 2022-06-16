@@ -1,10 +1,32 @@
 .name-field{
  height: 20px;
  width: 250px;
- margin-left: 70px;
+ margin-left: 60px;
 }
 .results-title{
-  margin-top: 10px;;
+  padding-top: 10px;
+  text-align: center;
+}
+.solutions-container{
+  margin: 0 auto;
+}
+.solutions-box{
+  margin: 0 auto;
+}
+.type-container{
+  margin-bottom: 10px;
+}
+@media (max-width: 700px){
+  .type-container{
+    text-align: center;
+  }
+}
+.solution-information{
+  margin-left: 30px;
+  margin-right: 10px;
+}
+.program-details{
+  margin-left: 30px;
 }
 body {
   color: white;
@@ -20,7 +42,15 @@ body {
 .error-message{
   color: red;
 }
-.page{
+.page-result{
+  /* ↓暗いオーバーレイを半透明で配置 */
+  margin: 0 auto;
+  width: 80%;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* ↓全体を覆うように配置 */
+}
+.page-enter{
   /* ↓暗いオーバーレイを半透明で配置 */
   margin: 0 auto;
   width: 500px;
@@ -28,9 +58,18 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   /* ↓全体を覆うように配置 */
 }
-.form-container{
-  width: 460px;
+.results-container{
+  width: 78%;
+  min-width: 300px;
   margin: 0 auto;
+}
+
+.form-container{
+  width: 500px;
+  margin: 0 auto;
+}
+.form-box{
+  margin-left: 30px;
 }
 
 .each-answer{

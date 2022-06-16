@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page-enter">
 <div class="form-container">
   <div class="header">
     <h1>海外展開診断フォーム</h1>
@@ -7,6 +7,7 @@
      <li class='error-message'><%= message %></li>
     <% end %>
   </div>
+  <div class="form-box">
   <%= form_for(@form) do |f| %>
     <b>1 法人名</b>
       <br>
@@ -71,10 +72,10 @@
           <%= f.check_box :region , {multiple: true},r,nil %>
         <% end %>
       </div>
-    <b>7 海外展開目的（複数選択可）</b>
+    <b>7 希望する支援内容（複数選択可）</b>
     <br>
     <div class="each-answer">
-      <% objective = ["人材獲得","販路開拓","海外メディアカバレッジ","拠点設立","協業連携","市場調査","共同研究","資金調達"] %>
+      <% objective = ["人材獲得","販路開拓","海外メディアカバレッジ","ビジネス戦略策定","拠点設立","協業連携","市場調査","共同研究","資金調達"] %>
       <% objective.each do |o| %>
         <div class="objective-form">
         <%= f.label :objective, o %>
@@ -84,7 +85,7 @@
     </div>
     <br>
     </div>
-
+    </div>
   <div class="result-button-container">
     <button class="btn btn-primary result-button" type="submit">診断結果へ
     </button>
