@@ -7,7 +7,11 @@ h1{
 .name-field{
  height: 20px;
  width: 250px;
- margin-left: 60px;
+ margin-left: 10px;
+ margin-bottom: 10px;
+}
+.radio{
+  margin-right:20px;
 }
 .results-title{
   padding-top: 10px;
@@ -147,7 +151,9 @@ body {
     margin-left: 10px;
 }
 }
-
+.field-container{
+  display: inline-block;
+}
 .each-answer{
   margin-left: 40px;
   margin-bottom: 10px;

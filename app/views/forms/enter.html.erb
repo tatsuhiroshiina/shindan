@@ -9,54 +9,54 @@
   <div class="form-box">
   <%= form_for(@form) do |f| %>
     <b>法人名</b>
-      <div class= "each-answer">
+      <div class= "each-answer field-container">
       <%= f.text_field :field, class: "name-field"%>
 
       </div>
-
+      <br>
     <b>プロダクト分類</b>
       <div class= "each-answer">
       <span>ハードウェア</span>
-      <label><%= f.radio_button :product_type, :ハードウェア, checked: true %></label>
+      <label><%= f.radio_button :product_type, :ハードウェア, checked: true, class: "radio" %></label>
       <span>ソフトウェア</span>
-      <label><%= f.radio_button :product_type, :ソフトウェア, checked: false %></label>
+      <label><%= f.radio_button :product_type, :ソフトウェア, checked: false, class: "radio" %></label>
       <br>
       </div>
     <b>顧客</b>
       <div class= "each-answer">
       <span>法人向け</span>
-      <label><%= f.radio_button :company_type, :法人向け, checked: true %></label>
+      <label><%= f.radio_button :company_type, :法人向け, checked: true, class: "radio" %></label>
       <span>消費者向け</span>
-      <label><%= f.radio_button :company_type, :消費者向け, checked: false %></label>
+      <label><%= f.radio_button :company_type, :消費者向け, checked: false, class: "radio" %></label>
       <br>
     </div>
     <b>シリーズ</b>
       <div class= "each-answer">
         <span>シード</span>
-        <label><%= f.radio_button :series, :シード, checked: true %></label>
+        <label><%= f.radio_button :series, :シード, checked: true, class: "radio" %></label>
         <span>シリーズA</span>
-        <label><%= f.radio_button :series, :シリーズA, checked: false %></label>
+        <label><%= f.radio_button :series, :シリーズA, checked: false, class: "radio" %></label>
         <span>シリーズB</span>
-        <label><%= f.radio_button :series, :シリーズB, checked: false %></label>
+        <label><%= f.radio_button :series, :シリーズB, checked: false, class: "radio" %></label>
         <br>
         <span>シリーズC〜</span>
-        <label><%= f.radio_button :series, :シリーズC〜, checked: false %></label>
+        <label><%= f.radio_button :series, :シリーズC〜, checked: false, class: "radio" %></label>
         <span>スタートアップではない</span>
-        <label><%= f.radio_button :series, :スタートアップではない, checked: false %></label>
+        <label><%= f.radio_button :series, :スタートアップではない, checked: false, class: "radio"%></label>
         <br>
       </div>
     <b>事業分野(最も当てはまるものを1つ)</b>
 
       <div class= "each-answer">
         <span>環境・エネルギー</span>
-        <label><%= f.radio_button :industry, :環境・エネルギー, checked: true %></label>
+        <label><%= f.radio_button :industry, :環境・エネルギー, checked: true, class: "radio" %></label>
         <span>バイオ・医療</span>
-        <label><%= f.radio_button :industry, :バイオ・医療, checked: false %></label>
+        <label><%= f.radio_button :industry, :バイオ・医療, checked: false, class: "radio" %></label>
         <br>
         <span>大学発ディープテック</span>
-        <label><%= f.radio_button :industry, :大学発ディープテック, checked: false %></label>
+        <label><%= f.radio_button :industry, :大学発ディープテック, checked: false, class: "radio" %></label>
         <span>その他</span>
-        <label><%= f.radio_button :industry, :その他, checked: false %></label>
+        <label><%= f.radio_button :industry, :その他, checked: false, class: "radio" %></label>
         <br>
       </div>
     <b>関心のある地域（複数選択可）</b>
