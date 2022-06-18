@@ -6,5 +6,8 @@ Rails.application.routes.draw do
       get :result
     end
   end
-  resources :solutions
+  resources :solutions do
+    collection {post :import}
+  end
+  get '*path' => redirect('/')
 end

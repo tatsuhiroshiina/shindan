@@ -20,7 +20,7 @@ class FormsController < ApplicationController
     @form = Form.find_by(id: params[:id])
     if @form.product_type == "ソフトウェア"
       #省く事業
-      @software = Solution.where(description: "テックイベント参加支援")
+      @software = Solution.where(description: "海外イベント参加支援")
     else
       @software = nil
     end
@@ -37,6 +37,11 @@ class FormsController < ApplicationController
       @seriesab = nil
     end
 
+    if @form.series == "シリーズB" || "シリーズC"
+      @seriesbc = Solution.where(description: "長期アクセラレーションプログラム")
+    else
+      @seriesbc = nil
+    end
     if @form.company_type == "法人向け"
       @btob = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Enterpriseコース")
     else
@@ -70,7 +75,7 @@ class FormsController < ApplicationController
     if @form.region.include?("アジア")
       @asia = nil
     else
-      @asia = Solution.where(title: "Ignite").or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub シンガポールコース"))
+      @asia = Solution.where(title: "Ignite").or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub シンガポールコース"))
 
     end
 
@@ -80,6 +85,7 @@ class FormsController < ApplicationController
       @usa = Solution.where(title: "CES").or(Solution.where(title: "Disrupt")).or(Solution.where(title: "Collision")).
       or(Solution.where(title: "X-Hub ニューヨークコース")).or(Solution.where(title: "X-Hub シリコンバレーコース"))
     end
+
 
     if @form.region.include?("アフリカ")
       @africa = nil
@@ -116,7 +122,8 @@ class FormsController < ApplicationController
     @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @bio).where.not(id: @other).where.not(id: @university).
     where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).
     where.not(id: @selling).where.not(id: @acceleration).where.not(title: "始動").where.not(title: "貿易投資相談").where.not(id: @recruitment).
-    where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).order('updated_at DESC')
+    where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).
+    order('title DESC')
 
     if @form.series == "スタートアップではない"
       @solutions = Solution.where(title: "始動").or(Solution.where(title: "貿易投資相談"))

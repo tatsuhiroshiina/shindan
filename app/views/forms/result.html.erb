@@ -1,9 +1,9 @@
+<h1>おすすめの支援メニュー</h1>
 <div class="page-result">
 <div class="results-container">
-<h1 class="results-title">おすすめの支援メニュー</h1>
 
 <div class= "solutions-container">
-  <div class="solutions-box"
+  <div class="solutions-box">
   <% @solutions.each.with_index(1) do |solution, i| %>
     <tr>
           <% if @solutions.where(description: solution.description).first.id == solution.id %>
@@ -11,9 +11,9 @@
               <b><%= solution.description %></b>
             </div>
           <% end %>
-          <%= link_to solution.website, target: :_blank  do %>
+          <%= link_to solution.website, target: :_blank, class: "titles"  do %>
             <div class="program-details">
-              <td><%=i%>. <%= solution.title %></td>
+              <td> <%= solution.title %></td>
             </div>
           <% end %>
           <div class="solution-information">
@@ -25,4 +25,19 @@
   </div>
 </div>
 </div>
+<div class= "bottom-box">
+  <%= link_to "https://www.facebook.com/jetroinnovation", target: :_blank, class: "contact-url" do %>
+  <div class= "facebook-introduction">
+    <span class="others-contact"> その他情報・お問い合わせ </span>
+    <%= image_tag 'https://cdn-icons-png.flaticon.com/512/124/124010.png', class: "facebook-icon" %>
+  </div>
+  <% end %>
+  <div class= "back">
+    <%= link_to "戻る", root_path, class: "back-button" %>
+  </div>
 </div>
+
+<%= form_tag import_solutions_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>
