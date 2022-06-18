@@ -24,21 +24,9 @@ class FormsController < ApplicationController
     else
       @software = nil
     end
-    if @form.series == "シード"
-      @seed = Solution.where(description: "長期アクセラレーションプログラム").where.not(classification: "X-Hub").where(title: "内閣府アクセラレーションプログラム Global Preparationコース")
-    else
-      @seed = nil
-    end
-
-
-    if @form.series == "シリーズB" || "シリーズA"
-      @seriesab = Solution.where(title: "内閣府アクセラレーションプログラム Global Preparationコース")
-    else
-      @seriesab = nil
-    end
 
     if @form.series == "シリーズB" || "シリーズC"
-      @seriesbc = Solution.where(description: "長期アクセラレーションプログラム")
+      @seriesbc = Solution.where.not(classification: "X-Hub").where(description: "長期アクセラレーションプログラム")
     else
       @seriesbc = nil
     end
@@ -123,7 +111,7 @@ class FormsController < ApplicationController
     where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).
     where.not(id: @selling).where.not(id: @acceleration).where.not(title: "始動").where.not(title: "貿易投資相談").where.not(id: @recruitment).
     where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).
-    order('title DESC')
+    order('description DESC')
 
     if @form.series == "スタートアップではない"
       @solutions = Solution.where(title: "始動").or(Solution.where(title: "貿易投資相談"))
