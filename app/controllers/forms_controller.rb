@@ -85,7 +85,7 @@ class FormsController < ApplicationController
       @europe = nil
     else
       #欧州が入っていなければ表示しない
-      @europe = Solution.where(title: "X-Hub ドイツコース").or(Solution.where(title: "VIVA Tech")).or(Solution.where(title: "欧州コース")).or(Solution.where(title: "4 Years From Now"))
+      @europe = Solution.where(title: "X-Hub ドイツコース").or(Solution.where(title: "VIVA Tech")).or(Solution.where(title: "X-Hub 欧州コース")).or(Solution.where(title: "4 Years From Now"))
     end
 
     if @form.objective.include?("人材獲得")
