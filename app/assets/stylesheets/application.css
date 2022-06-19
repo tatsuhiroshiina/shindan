@@ -40,7 +40,7 @@ h1{
 .facebook-introduction{
   display: inline-flex;
   color:white;
-  margin: 10px 0 10px 0;
+  margin: 20px 0 10px 0;
 }
 .contact-url{
   text-decoration: none;
@@ -86,9 +86,10 @@ body {
   margin: 0 auto;
   width: 90%;
   min-width: 400px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   background-color: white;
   border-radius: 10px;
+  padding-top: 5px;
   /* ↓全体を覆うように配置 */
 }
 .page-enter{
@@ -96,8 +97,10 @@ body {
   margin: 0 auto;
   border-radius: 10px;
   width: 500px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   background-color: white;
+  padding-top: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
   /* ↓全体を覆うように配置 */
 }
 .results-container{
@@ -129,15 +132,24 @@ body {
   margin-left: 10px;
   min-width: 500px;
   margin: 0 auto;
-  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
 }
 
 .form-box{
-  margin-top: 20px;
   margin-left: 30px;
   margin-right: 30px;
 
+
 }
+
+.field-container{
+  display: inline-block;
+}
+.each-answer{
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 500px){
   .form-container{
     min-width: 0;
@@ -147,22 +159,33 @@ body {
   }
   .name-field {
     height: 20px;
-    width: 250px;
+    width: 200px;
     margin-left: 10px;
 }
+  .each-answer{
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .radio{
+    margin-right: 0;
+  }
 }
-.field-container{
-  display: inline-block;
+
+@media (max-width: 400px){
+  .results-container {
+    min-width: 0px;
+  }
+  .page-result{
+    min-width: 0px;
+  }
 }
-.each-answer{
-  margin-left: 40px;
-  margin-bottom: 10px;
-}
+
 .result-button-container{
   text-align: center;
 }
 .result-button{
   margin-bottom: 20px;
+  margin-top: 10px;
   background-color: orange;
 border: none;
 color: black;
@@ -186,4 +209,11 @@ border-radius: 5px;
 .header{
   padding-top: 2px;
   text-align: center;
+}
+.header ul{
+  padding-left: 0;
+  display: inline-block;
+}
+.header ul li {
+	text-align: left;
 }

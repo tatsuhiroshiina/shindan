@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      form: フォーム
+    attributes:
+      form:
+        field: 「法人名」
+        region: 「関心のある地域」
+        objective: 「希望する支援内容」

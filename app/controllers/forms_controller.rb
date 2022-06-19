@@ -111,7 +111,7 @@ class FormsController < ApplicationController
     where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).
     where.not(id: @selling).where.not(id: @acceleration).where.not(title: "始動").where.not(title: "貿易投資相談").where.not(id: @recruitment).
     where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).
-    order('description DESC')
+    order('description ASC')
 
     if @form.series == "スタートアップではない"
       @solutions = Solution.where(title: "始動").or(Solution.where(title: "貿易投資相談"))
