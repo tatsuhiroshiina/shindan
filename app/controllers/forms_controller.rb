@@ -32,9 +32,9 @@ class FormsController < ApplicationController
     end
 
     if @form.company_type.include?("法人")
-      @btob = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Enterpriseコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
-    else
       @btob = nil
+    else
+      @btob = Solution.where(title: "内閣府アクセラレーションプログラム Enterpriseコース")
     end
 
     if @form.industry.include?("環境")
