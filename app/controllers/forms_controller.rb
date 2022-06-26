@@ -31,30 +31,25 @@ class FormsController < ApplicationController
       @seed = nil
     end
 
-    if @form.series == "シリーズB" || "シリーズC"
-      @seriesbc = Solution.where.not(classification: "X-Hub").where(description: "長期アクセラレーションプログラム")
-    else
-      @seriesbc = nil
-    end
-    if @form.company_type == "法人向け"
+    if @form.company_type.include?("法人")
       @btob = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Enterpriseコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @btob = nil
     end
 
-    if @form.industry == "環境・エネルギー"
+    if @form.industry.include?("環境")
       @cleantech = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム CleanTechコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @cleantech = nil
     end
 
-    if @form.industry == "バイオ・医療"
+    if @form.industry.include?("バイオ")
       @bio = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @bio = nil
     end
 
-    if @form.industry == "大学発ディープテック"
+    if @form.industry.include?("大学発")
       @university = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Universityコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @university = nil
@@ -64,6 +59,12 @@ class FormsController < ApplicationController
       @other = Solution.where(title: "内閣府アクセラレーションプログラム Universityコース").or(Solution.where(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース")).or(Solution.where(title: "内閣府アクセラレーションプログラム CleanTechコース"))
     else
       @other = nil
+    end
+
+    if @form.series == "シリーズB" || "シリーズC〜"
+      @seriesbc = Solution.where.not(classification: "X-Hub").where(description: "長期アクセラレーションプログラム")
+    else
+      @seriesbc = nil
     end
 
     if @form.region.include?("アジア")
@@ -119,11 +120,7 @@ class FormsController < ApplicationController
     end
 
 
-    @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @bio).where.not(id: @other).where.not(id: @university).
-    where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).
-    where.not(id: @selling).where.not(id: @acceleration).where.not(id: @seed).where.not(title: "貿易投資相談").where.not(id: @recruitment).
-    where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).
-    where.not(id: @trade).order('description ASC')
+    @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @bio).where.not(id: @other).where.not(id: @university).where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).where.not(id: @selling).where.not(id: @acceleration).where.not(id: @seed).where.not(title: "貿易投資相談").where.not(id: @recruitment).where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).where.not(id: @trade).order('description ASC')
 
     if @form.series == "スタートアップではない"
       @solutions = Solution.where(title: "始動").or(Solution.where(title: "貿易投資相談")).or(Solution.where(title: "Japan Day"))
