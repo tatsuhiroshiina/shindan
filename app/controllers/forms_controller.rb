@@ -25,8 +25,8 @@ class FormsController < ApplicationController
       @software = nil
     end
 
-    if @form.series == "シード" && @form.objective == "ビジネス戦略策定"
-      @seed = Solution.where.not(title: "始動")
+    if @form.series != "スタートアップではない" || !@form.objective.include?("ビジネス戦略策定")
+      @seed = Solution.where(title: "始動")
     else
       @seed = nil
     end
