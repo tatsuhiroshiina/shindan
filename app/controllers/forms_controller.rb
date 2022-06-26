@@ -120,7 +120,7 @@ class FormsController < ApplicationController
     end
 
 
-    @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @bio).where.not(id: @other).where.not(id: @university).where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).where.not(id: @selling).where.not(id: @acceleration).where.not(id: @seed).where.not(title: "貿易投資相談").where.not(id: @recruitment).where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).where.not(id: @trade).order('description ASC')
+    @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @bio).where.not(id: @other).where.not(id: @university).where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).where.not(id: @selling).where.not(id: @acceleration).where.not(id: @seed).where.not(title: "貿易投資相談").where.not(id: @recruitment).where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).where.not(id: @trade).order('description ASC').order('id DESC')
 
     if @form.series == "スタートアップではない"
       @solutions = Solution.where(title: "始動").or(Solution.where(title: "貿易投資相談")).or(Solution.where(title: "Japan Day"))
