@@ -1,4 +1,7 @@
-<h1>JETRO 支援メニュー紹介フォーム</h1>
+<title>
+  JETRO 支援メニュー診断
+</title>
+<h1>JETRO 支援メニュー診断</h1>
 <div class="page-enter">
 <div class="form-container">
   <div class="header">
@@ -73,7 +76,7 @@
     <b>希望する支援内容（複数選択可）</b>
 
     <div class="each-answer">
-      <% objective = ["人材獲得","販路開拓","拠点設立","協業連携","市場調査","共同研究","資金調達","ビジネス戦略策定"] %>
+      <% objective = ["人材獲得","販路開拓","拠点設立","協業連携","市場調査","共同研究","資金調達","ビジネス戦略策定", "貿易実務"] %>
       <% objective.each do |o| %>
         <div class="objective-form">
         <%= f.label :objective, o %>

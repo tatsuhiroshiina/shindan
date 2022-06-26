@@ -1,3 +1,6 @@
+<title>
+  おすすめの支援メニュー
+</title>
 <h1>おすすめの支援メニュー</h1>
 <div class="page-result">
 <div class="results-container">
@@ -17,10 +20,9 @@
             </div>
           <% end %>
           <div class="solution-information">
-            <td><%= solution.information %></td>
+            <p><%= safe_join(solution.information.split("|"),tag(:br)) %></p>
           </div>
     </tr>
-    <br>
   <% end %>
   </div>
 </div>

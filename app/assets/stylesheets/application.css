@@ -36,6 +36,7 @@ h1{
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: -10px;
+  margin-top: -10px;
 }
 .facebook-introduction{
   display: inline-flex;
@@ -86,6 +87,7 @@ body {
   margin: 0 auto;
   width: 90%;
   min-width: 400px;
+  max-width: 650px;
   padding-bottom: 30px;
   background-color: white;
   border-radius: 10px;
