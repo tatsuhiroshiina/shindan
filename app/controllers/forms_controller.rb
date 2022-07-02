@@ -18,14 +18,8 @@ class FormsController < ApplicationController
 
   def result
     @form = Form.find_by(id: params[:id])
-    if @form.product_type == "ソフトウェア"
-      #省く事業
-      @software = Solution.where(description: "海外イベント参加支援")
-    else
-      @software = nil
-    end
 
-    if @form.series != "スタートアップではない" || !@form.objective.include?("ビジネス戦略策定")
+    if @form.series != "シード" && @form.series != "スタートアップではない" || !@form.objective.include?("ビジネス戦略策定")
       @seed = Solution.where(title: "始動")
     else
       @seed = nil
@@ -46,7 +40,7 @@ class FormsController < ApplicationController
     if @form.industry.include?("バイオ")
       @bio = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
-      @bio = nil
+      @bio = Solution.where(title: "BIO International Convention").or(Solution.where(title: "MEDICA")).or(Solution.where(title: "Arab Health")).or(Solution.where(title: "中国国際輸入博覧会")).or(Solution.where(title: "医療機器オンライン商談会"))
     end
 
     if @form.industry.include?("大学発")
@@ -61,8 +55,8 @@ class FormsController < ApplicationController
       @other = nil
     end
 
-    if @form.series == "シリーズB" || "シリーズC〜"
-      @seriesbc = Solution.where.not(classification: "X-Hub").where(description: "長期アクセラレーションプログラム")
+    if @form.series.include?("B") || @form.series.include?("C")
+      @seriesbc = Solution.where(description: "長期アクセラレーションプログラム")
     else
       @seriesbc = nil
     end
@@ -98,19 +92,55 @@ class FormsController < ApplicationController
     if @form.objective.include?("人材獲得")
       @recruitment = nil
     else
-      @recruitment = Solution.where(title: "Japan Day")
+      @recruitment = Solution.where(description: "人材獲得支援")
+    end
+
+    if @form.objective.include?("協業連携") || @form.objective.include?("販路開拓") || @form.objective.include?("調査")|| @form.objective.include?("資金調達")
+      @event = nil
+    else
+      @event = Solution.where(description: "海外イベント参加支援")
     end
 
     if @form.objective.include?("貿易実務")
       @trade = nil
     else
-      @trade = Solution.where(title: "貿易投資相談")
+      @trade = Solution.where(description: "貿易実務支援")
     end
 
-    if @form.objective.include?("ビジネス戦略策定") || @form.objective.include?("人材獲得") || @form.objective.include?("販路開拓")|| @form.objective.include?("拠点設立")|| @form.objective.include?("協業連携")|| @form.objective.include?("市場調査")|| @form.objective.include?("資金調達")
-      @gah = nil
+    if @form.objective.include?("特許")
+      @ip = nil
     else
-      @gah = Solution.where(title: "グローバル・アクセラレーション・ハブ")
+      @ip = Solution.where(description: "補助金提供")
+    end
+
+    if @form.objective.include?("市場調査")
+      @research = nil
+    else
+      @research = Solution.where(title: "海外ミニ調査サービス")
+    end
+
+    if @form.objective.include?("戦略策定")
+      @plan = nil
+    else
+      @plan = Solution.where(title: "海外展開戦略策定支援（SWOT分析等）")
+    end
+
+    if @form.objective.include?("貿易実務") || @form.objective.include?("販路開拓") || @form.objective.include?("調査")
+      @platform = nil
+    else
+      @platform = Solution.where(title: "中小企業海外展開現地支援プラットフォーム")
+    end
+
+    if @form.objective.include?("貿易実務") || @form.objective.include?("販路開拓") || @form.objective.include?("ビジネス戦略策定")
+      @handson = nil
+    else
+      @handson = Solution.where(title: "海外展開フェーズに即したハンズオン支援")
+    end
+
+    if @form.objective.include?("協業連携")
+      @partnership = nil
+    else
+      @partnership = Solution.where(title: "J-Bridge")
     end
 
     if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達")|| @form.objective.include?("市場調査")
@@ -119,12 +149,14 @@ class FormsController < ApplicationController
       @acceleration = Solution.where(description: "長期アクセラレーションプログラム")
     end
 
-
-    @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @bio).where.not(id: @other).where.not(id: @university).where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).where.not(id: @selling).where.not(id: @acceleration).where.not(id: @seed).where.not(title: "貿易投資相談").where.not(id: @recruitment).where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @recruitment).where.not(id: @seriesbc).where.not(id: @trade).order('description ASC').order('id DESC')
-
-    if @form.series == "スタートアップではない"
-      @solutions = Solution.where(title: "始動").or(Solution.where(title: "貿易投資相談")).or(Solution.where(title: "Japan Day"))
+    if @form.series.include?("スタートアップではない")
+      @notsu = Solution.where.not(classification: "notsu")
+    else
+      @notsu = nil
     end
+
+    @solutions = Solution.where.not(id: @software).where.not(id: @seriesc).where.not(id: @cleantech).where.not(id: @ip).where.not(id: @bio).where.not(id: @other).where.not(id: @university).where.not(id: @asia).where.not(id: @usa).where.not(id: @africa).where.not(id: @europe).where.not(id: @selling).where.not(id: @acceleration).where.not(id: @seed).where.not(title: "貿易投資相談").where.not(id: @recruitment).where.not(id: @seriesab).where.not(id: @btob).where.not(id: @acceleration).where.not(id: @gah).where.not(id: @platform).where.not(id: @event).where.not(id: @handson).where.not(id: @plan).where.not(id: @research).where.not(id: @partnership).where.not(id: @notsu).where.not(id: @recruitment).where.not(id: @seriesbc).where.not(id: @trade).order('id ASC')
+
   end
 
   private
