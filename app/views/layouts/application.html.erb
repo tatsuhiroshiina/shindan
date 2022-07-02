@@ -18,6 +18,9 @@
          gtag('js', new Date());
 
          gtag('config', 'G-H96K4T7QVD');
+         if (#{raw current_user.to_json}) {
+           gtag('set', {'user_id': #{raw current_user.to_json}.id});
+         }
       </script>
   </head>
 
