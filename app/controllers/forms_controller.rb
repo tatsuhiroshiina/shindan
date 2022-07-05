@@ -143,7 +143,7 @@ class FormsController < ApplicationController
       @partnership = Solution.where(title: "J-Bridge")
     end
 
-    if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達")|| @form.objective.include?("市場調査")
+    if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達") 
       @acceleration = nil
     else
       @acceleration = Solution.where(description: "長期アクセラレーションプログラム")
