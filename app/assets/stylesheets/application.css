@@ -123,7 +123,9 @@ body {
 }
 .titles{
   color: blue;
-  text-decoration: none;
+}
+.wordwithbutton{
+  display:inline-block;
 }
 
 @media (max-width: 700px){

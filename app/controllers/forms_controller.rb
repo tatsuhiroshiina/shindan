@@ -32,19 +32,19 @@ class FormsController < ApplicationController
     end
 
     if @form.industry.include?("環境")
-      @cleantech = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム CleanTechコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
+      @cleantech = Solution.where(description: "長期アクセラレーションプログラム").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム CleanTechコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @cleantech = nil
     end
 
     if @form.industry.include?("バイオ")
-      @bio = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
+      @bio = Solution.where(description: "長期アクセラレーションプログラム").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @bio = Solution.where(title: "BIO International Convention").or(Solution.where(title: "MEDICA")).or(Solution.where(title: "Arab Health")).or(Solution.where(title: "中国国際輸入博覧会")).or(Solution.where(title: "医療機器オンライン商談会"))
     end
 
     if @form.industry.include?("大学発")
-      @university = Solution.where(description: "長期アクセラレーションプログラム").where(classification: nil).where.not(title: "内閣府アクセラレーションプログラム Universityコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
+      @university = Solution.where(description: "長期アクセラレーションプログラム").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム Universityコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @university = nil
     end

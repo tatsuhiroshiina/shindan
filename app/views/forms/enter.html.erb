@@ -37,17 +37,27 @@
     </div>
     <b>シリーズ</b>
       <div class= "each-answer">
+        <div class="wordwithbutton">
         <span>シード</span>
         <label><%= f.radio_button :series, :シード, checked: true, class: "radio" %></label>
+        </div>
+        <div class="wordwithbutton">
         <span>シリーズA</span>
         <label><%= f.radio_button :series, :シリーズA, checked: false, class: "radio" %></label>
+        </div>
+        <div class="wordwithbutton">
         <span>シリーズB</span>
         <label><%= f.radio_button :series, :シリーズB, checked: false, class: "radio" %></label>
+        </div>
         <br>
+        <div class="wordwithbutton">
         <span>シリーズC〜</span>
         <label><%= f.radio_button :series, :シリーズC〜, checked: false, class: "radio" %></label>
+        </div>
+        <div class="wordwithbutton">
         <span>スタートアップではない</span>
         <label><%= f.radio_button :series, :スタートアップではない, checked: false, class: "radio"%></label>
+        </div>
         <br>
       </div>
     <b>事業分野(最も当てはまるものを1つ)</b>
