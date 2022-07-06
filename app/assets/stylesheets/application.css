@@ -201,6 +201,7 @@ padding: 10px 30px;
 text-decoration: none;
 cursor: pointer;
 border-radius: 5px;
+font: 500 14px "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, "MS P Gothic", sans-serif;
 }
 .objective-form{
   display: inline-block;

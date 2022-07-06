@@ -137,13 +137,13 @@ class FormsController < ApplicationController
       @handson = Solution.where(title: "海外展開フェーズに即したハンズオン支援")
     end
 
-    if @form.objective.include?("協業連携")
+    if @form.objective.include?("協業連携") || @form.objective.include?("資金調達")
       @partnership = nil
     else
       @partnership = Solution.where(title: "J-Bridge")
     end
 
-    if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達") 
+    if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達")
       @acceleration = nil
     else
       @acceleration = Solution.where(description: "長期アクセラレーションプログラム")
