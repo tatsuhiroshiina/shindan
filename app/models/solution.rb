@@ -11,6 +11,6 @@ class Solution < ApplicationRecord
 
   # 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["title", "description", "classification", "website", "information", "where"]
+    ["title", "description", "classification", "website", "information", "where", "image"]
   end
 end

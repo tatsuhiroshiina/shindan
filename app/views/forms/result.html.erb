@@ -20,6 +20,7 @@
           <% if @solutions.where(description: solution.description).first.id == solution.id %>
             <div class="type-container">
               <b><%= safe_join(solution.description.split("|"),tag(:br)) %></b>
+              <br> <span class="target"><%= solution.image =%></span>
             </div>
           <% end %>
           <%= link_to solution.website, target: :_blank, class: "titles"  do %>
@@ -29,7 +30,7 @@
           <% end %>
           <div class="solution-information">
             <p>
-              <b><%= solution.where %></b>
+              <span class="target"><%= solution.where %></span>
               <%= safe_join(solution.information.split("|"),tag(:br)) %></p>
           </div>
     </tr>
@@ -43,9 +44,7 @@
   </div>
 </div>
 
-<!--
 <%= form_tag import_solutions_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "インポート" %>
 <% end %>
--->

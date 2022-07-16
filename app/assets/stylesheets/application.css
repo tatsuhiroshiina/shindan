@@ -118,6 +118,10 @@ body {
   min-width: 400px;
   margin: 0 40px;
 }
+.target{
+  color: gray;
+  font-weight: bold;
+}
 .facebook-icon{
   width:30px;
   border-radius: 0 5px 5px 0;

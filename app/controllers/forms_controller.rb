@@ -32,19 +32,19 @@ class FormsController < ApplicationController
     end
 
     if @form.industry.include?("環境")
-      @cleantech = Solution.where(description: "長期アクセラレーションプログラム | 対応ニーズ：事業戦略策定、販路開拓、事業提携、資金調達").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム CleanTechコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
+      @cleantech = Solution.where(description: "長期アクセラレーションプログラム").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム CleanTechコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @cleantech = nil
     end
 
     if @form.industry.include?("バイオ")
-      @bio = Solution.where(description: "長期アクセラレーションプログラム | 対応ニーズ：事業戦略策定、販路開拓、事業提携、資金調達").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
+      @bio = Solution.where(description: "長期アクセラレーションプログラム").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム Bio/Healthcareコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @bio = Solution.where(title: "BIO International Convention").or(Solution.where(title: "MEDICA")).or(Solution.where(title: "Arab Health")).or(Solution.where(title: "中国国際輸入博覧会")).or(Solution.where(title: "医療機器オンライン商談会"))
     end
 
     if @form.industry.include?("大学発")
-      @university = Solution.where(description: "長期アクセラレーションプログラム | 対応ニーズ：事業戦略策定、販路開拓、事業提携、資金調達").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム Universityコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
+      @university = Solution.where(description: "長期アクセラレーションプログラム").where(classification: "su").where.not(title: "内閣府アクセラレーションプログラム Universityコース").where.not(title: "内閣府アクセラレーションプログラム Global Preparationコース")
     else
       @university = nil
     end
@@ -56,7 +56,7 @@ class FormsController < ApplicationController
     end
 
     if @form.series.include?("B") || @form.series.include?("C")
-      @seriesbc = Solution.where(description: "長期アクセラレーションプログラム | 対応ニーズ：事業戦略策定、販路開拓、事業提携、資金調達")
+      @seriesbc = Solution.where(description: "長期アクセラレーションプログラム")
     else
       @seriesbc = nil
     end
@@ -98,7 +98,7 @@ class FormsController < ApplicationController
     if @form.objective.include?("協業連携") || @form.objective.include?("販路開拓") || @form.objective.include?("調査")|| @form.objective.include?("資金調達")
       @event = nil
     else
-      @event = Solution.where(description: "海外イベント参加支援 | 対応ニーズ：市場調査、販路開拓、事業提携、資金調達")
+      @event = Solution.where(description: "海外イベント参加支援")
     end
 
     if @form.objective.include?("貿易実務")
@@ -146,7 +146,7 @@ class FormsController < ApplicationController
     if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達")
       @acceleration = nil
     else
-      @acceleration = Solution.where(description: "長期アクセラレーションプログラム | 対応ニーズ：事業戦略策定、販路開拓、事業提携、資金調達")
+      @acceleration = Solution.where(description: "長期アクセラレーションプログラム")
     end
 
     if @form.series.include?("スタートアップではない")
