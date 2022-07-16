@@ -3,15 +3,23 @@
 </title>
 <h1>おすすめの支援メニュー</h1>
 <div class="page-result">
+  <div class= "bottom-box">
+  <%= link_to "https://www.facebook.com/jetroinnovation", target: :_blank, class: "contact-url" do %>
+  <div class= "facebook-introduction">
+    <span class="others-contact"> 公募情報・お問い合わせ </span>
+    <%= image_tag 'https://cdn-icons-png.flaticon.com/512/124/124010.png', class: "facebook-icon" %>
+  </div>
+  <% end %>
+  </div>
 <div class="results-container">
-
 <div class= "solutions-container">
   <div class="solutions-box">
+
   <% @solutions.each.with_index(1) do |solution, i| %>
     <tr>
           <% if @solutions.where(description: solution.description).first.id == solution.id %>
             <div class="type-container">
-              <b><%= solution.description %></b>
+              <b><%= safe_join(solution.description.split("|"),tag(:br)) %></b>
             </div>
           <% end %>
           <%= link_to solution.website, target: :_blank, class: "titles"  do %>
@@ -20,7 +28,9 @@
             </div>
           <% end %>
           <div class="solution-information">
-            <p><%= safe_join(solution.information.split("|"),tag(:br)) %></p>
+            <p>
+              <b><%= solution.where %></b>
+              <%= safe_join(solution.information.split("|"),tag(:br)) %></p>
           </div>
     </tr>
   <% end %>
@@ -28,20 +38,12 @@
 </div>
 </div>
 <div class= "bottom-box">
-  <%= link_to "https://www.facebook.com/jetroinnovation", target: :_blank, class: "contact-url" do %>
-  <div class= "facebook-introduction">
-    <span class="others-contact"> 公募情報・お問い合わせ </span>
-    <%= image_tag 'https://cdn-icons-png.flaticon.com/512/124/124010.png', class: "facebook-icon" %>
-  </div>
-  <% end %>
   <div class= "back">
     <%= link_to "戻る", root_path, class: "back-button" %>
   </div>
 </div>
 
-<!--
 <%= form_tag import_solutions_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "インポート" %>
 <% end %>
--->

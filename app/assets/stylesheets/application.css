@@ -41,6 +41,8 @@ h1{
   display: inline-flex;
   color:white;
   margin: 20px 0 10px 0;
+  text-align: center;
+
 }
 .contact-url{
   text-decoration: none;
@@ -54,6 +56,7 @@ h1{
   padding-right: 10px;
   color: black;
   border-radius: 5px 0 0 5px;
+  text-align: center;
 }
 .program-details{
   margin-left: 10px;
@@ -74,8 +77,11 @@ body {
 
 }
 .back-button{
-  text-decoration: none;
   color:blue;
+  text-align: center;
+}
+.back{
+  padding-top: 20px;
 }
 .field_with_errors {
   display: contents;
@@ -111,11 +117,11 @@ body {
 .results-container{
   min-width: 400px;
   margin: 0 40px;
-  padding-top: 10px;
 }
 .facebook-icon{
   width:30px;
   border-radius: 0 5px 5px 0;
+  text-align: center;
 }
 .bottom-box{
   text-align: center;
