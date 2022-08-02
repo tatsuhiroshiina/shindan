@@ -64,7 +64,7 @@ class FormsController < ApplicationController
     if @form.region.include?("アジア")
       @asia = nil
     else
-      @asia = Solution.where(title: "Ignite").or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub シンガポールコース"))
+      @asia = Solution.where(title: "Ignite").or(Solution.where(title: "Techsauce")).or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub 深センコース")).or(Solution.where(title: "X-Hub シンガポールコース"))
 
     end
 
@@ -86,7 +86,7 @@ class FormsController < ApplicationController
       @europe = nil
     else
       #欧州が入っていなければ表示しない
-      @europe = Solution.where(title: "X-Hub ドイツコース").or(Solution.where(title: "VIVA Tech")).or(Solution.where(title: "X-Hub 欧州コース")).or(Solution.where(title: "4 Years From Now"))
+      @europe = Solution.where(title: "X-Hub ドイツコース").or(Solution.where(title: "VIVA Tech")).or(Solution.where(title: "X-Hub 欧州コース")).or(Solution.where(title: "4 Years From Now")).or(Solution.where(title: "Web Summit"))
     end
 
     if @form.objective.include?("人材獲得")
