@@ -110,7 +110,7 @@ class FormsController < ApplicationController
     if @form.objective.include?("特許")
       @ip = nil
     else
-      @ip = Solution.where(description: "補助金提供")
+      @ip = Solution.where(description: "知財補助金")
     end
 
     if @form.objective.include?("市場調査")
@@ -140,7 +140,7 @@ class FormsController < ApplicationController
     if @form.objective.include?("協業連携") || @form.objective.include?("資金調達")
       @partnership = nil
     else
-      @partnership = Solution.where(title: "J-Bridge")
+      @partnership = Solution.where(description: "協業先マッチング支援")
     end
 
     if @form.objective.include?("ビジネス戦略策定")|| @form.objective.include?("資金調達")
