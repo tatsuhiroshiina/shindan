@@ -137,7 +137,7 @@ class FormsController < ApplicationController
       @handson = Solution.where(title: "海外展開フェーズに即したハンズオン支援")
     end
 
-    if @form.objective.include?("協業連携") || @form.objective.include?("資金調達")
+    if @form.objective.include?("協業連携") || @form.objective.include?("共同研究")
       @partnership = nil
     else
       @partnership = Solution.where(description: "協業先マッチング支援")
